@@ -6,9 +6,9 @@ function Maincontainer() {
     // const inputVVlu1 = props.inputVVlu
     // console.log(props)
   return (
-    <div className='w-full h-full ml-[400px] bg-[#fe8004]'>
+    <div className='w-full h-auto bg-[#fe8004] '>
         <div className="h-full w-full bg-yellow-200 p-10 flex justify-center">
-            <div className="wrap w-[70%] h-full  bg-green-300">
+            <div className="wrap w-[70%] h-full">
                <div className="head bg-[#536697]">
                <div className=" w-full flex p-3 border-b-[1px] border-gray-300">
                     <ul className='flex'>

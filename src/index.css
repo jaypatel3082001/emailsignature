@@ -8,3 +8,28 @@
   padding: 0;
   margin: 0;
 } */
+
+@layer utilities {
+  .custom-template1 {
+    /* background-color: #ff0000; */
+    margin-top: 90px;
+  }
+
+  .custom-template2 {
+    background-color: #000000; /* Adjust size as needed */
+  }
+  .custom-template3 {
+    background-color: #6200ff; /* Adjust size as needed */
+  }
+  .custom-template4 {
+    background-color: #008cff; /* Adjust size as needed */
+  }
+  .custom-template5 {
+    background-color: #ff00dd; /* Adjust size as needed */
+  }
+  .custom-template6 {
+    background-color: #ffd000; /* Adjust size as needed */
+  }
+
+  /* Add more custom classes as needed */
+}

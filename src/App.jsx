@@ -12,15 +12,18 @@ function App() {
 
   return (
     <>
-    <div className='w-full h-screen'> 
-    <Header />
-    <div className='flex'>
-    <Sidebar />
-    <Maincontainer />
-    </div>
-    
-    </div>
-      
+      <div className='w-full h-full'>
+        <Header />
+       
+        <div className='flex h-full w-full'>
+          {/* <Sidebar /> */}
+         
+          <Sidebar />
+           <Maincontainer />
+        </div>
+
+      </div>
+
     </>
   )
 }

@@ -2,7 +2,8 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className=' w-full px-3'>
+    <>
+     <div className=' w-full px-3 sticky top-0 z-10 bg-white'>
        <div className=' w-full p-2 flex justify-between'>
         <div className="flex w-[103px]">
           <img src="https://www.krishangtechnolab.com/wp-content/uploads/2021/06/kt-logo.svg" alt="img not found" />
@@ -16,6 +17,8 @@ function Header() {
        </div>
         
     </div>
+    </>
+   
   )
 }
 
