@@ -7,6 +7,13 @@ function Tempate(props) {
     const inputs = props.inputVVlu
     const inuser = inputs.user
     const { pelutemp } = inputs.temps
+    let acol=inputs?.color
+    let ab =parseInt(acol[0])
+    let abh = parseInt(acol[1])
+    let abk = parseInt(acol[2])
+   
+    console.log("eeeeeeefghfgj",ab)
+    // console.log("refh",inputs.color)
     //  a1 = false, a2 = false, a3 = "false", a4 = "false", a5 = "false", a6 = "false";
     
     //  let  a1 = pelutemp,
@@ -26,7 +33,7 @@ function Tempate(props) {
     return (
         <>
             <div className='flex w-full justify-center'>
-                <div className="h-72 ">
+                <div className="h-72">
                     <div className="flex w-auto">
                         <div className={`image border-r-blue-400 border-[1px] border-t-0 border-l-0 border-b-0 ${pelutemp=='1' && " border-r-blue-400"} ${pelutemp=='2' && "border-r-0"}`}>
                             <div className='imgwrap h-28 w-28  pr-3'>{inputs.image ? <img src={inputs.image} alt="Uploaded" /> : <img src={`${assetsUrl}p1.jpg`} alt="" />}</div>
@@ -45,9 +52,9 @@ function Tempate(props) {
                         </div>
                         <div className="info w-auto">
 
-                            <div className='flex flex-col px-5'>
-                                <div className='flex font-bold text-lg'>
-                                    <span className='w-auto pr-3' value={inuser.fname}>{inuser.fname}</span>
+                            <div className={`flex flex-col px-5 ${pelutemp=='2' && " px-0 py-3"}`}>
+                                <div className={`flex font-bold text-lg `} style={{color:`rgb(${ab},${abh},${abk})`}}>
+                                    <span className={`w-auto pr-3 bg-[rgb(${ab},${abh},${abk})]`}  value={inuser.fname}>{inuser.fname}</span>
                                     <span className='w-auto' value={inuser.lname}>{inuser.lname}</span>
                                 </div>
                                 <div className='flex'>
@@ -66,10 +73,19 @@ function Tempate(props) {
                                 </div>
 
                             </div>
+                            <div className={`${pelutemp=='1' && "hidden"} ${pelutemp=='2' && "flex"}`}>
+                                <div className= {`bannerwraper pt-3 pr-5 w-full`}>
+                                {inputs.banner ?  <img src={inputs.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
+                                </div>
+                              </div>
 
                         </div>
                     </div>
-                    <div className="bg-black"></div>
+                    <div className={`flex ${pelutemp=='2' && "hidden"}`}>
+                        <div className= {`bannerwraper pt-3 pr-5 w-full`}>
+                           {inputs.banner ?  <img src={inputs.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
+                        </div>
+                    </div>
                 </div>
 
             </div>
