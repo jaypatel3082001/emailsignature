@@ -8,11 +8,18 @@ function Tempate(props) {
     const inuser = inputs.user
     const { pelutemp } = inputs.temps
     let acol=inputs?.color
+    let acol2=inputs?.color2
     let ab =parseInt(acol[0])
     let abh = parseInt(acol[1])
     let abk = parseInt(acol[2])
+    let ab2 =parseInt(acol2[0])
+    let abh2 = parseInt(acol2[1])
+    let abk2 = parseInt(acol2[2])
    
-    console.log("eeeeeeefghfgj",ab)
+    // console.log("2ndeeeeeeefghfgj",ab2)
+    // console.log("2ndeeeeeeefghfgj",abh2)
+    // console.log("2ndeeeeeeefghfgj",abk2)
+    console.log("2ndeeeeeeefghfgj",acol2)
     // console.log("refh",inputs.color)
     //  a1 = false, a2 = false, a3 = "false", a4 = "false", a5 = "false", a6 = "false";
     
@@ -54,16 +61,16 @@ function Tempate(props) {
 
                             <div className={`flex flex-col px-5 ${pelutemp=='2' && " px-0 py-3"}`}>
                                 <div className={`flex font-bold text-lg `} style={{color:`rgb(${ab},${abh},${abk})`}}>
-                                    <span className={`w-auto pr-3 bg-[rgb(${ab},${abh},${abk})]`}  value={inuser.fname}>{inuser.fname}</span>
+                                    <span className={`w-auto pr-3`}  value={inuser.fname}>{inuser.fname}</span>
                                     <span className='w-auto' value={inuser.lname}>{inuser.lname}</span>
                                 </div>
-                                <div className='flex'>
+                                <div className='flex' style={{color:`rgb(${ab2},${abh2},${abk2})`}}>
                                     <span className='w-auto pr-3 border-r-blue-400 border-[1px] border-t-0 border-l-0 border-b-0 outline-none' value={inuser.cname}>{inuser.cname}</span>
                                     <span className='w-auto px-3' value={inuser.dname}>{inuser.dname}</span>
 
 
                                 </div>
-                                <div className="fexl flex-col">
+                                <div className="fexl flex-col" style={{color:`rgb(${ab2},${abh2},${abk2})`}}>
                                     <span>{inuser.mnum && <a href={`tel:${inuser.mnum}`} value={inuser.mnum} className='flex items-center cursor-pointer'><span className='mr-2'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="14px" width="14px"><path fill="#ff0000" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z" /></svg></span>{inuser.mnum}</a>}</span>
                                     <span className='flex'>{inuser.emailadd && <a href={`mailto:${inuser.emailadd}`} value={inuser.emailadd} className='flex items-center cursor-pointer'><span className='mr-2'><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="14px" width="14px"><path fill="#f50f0f" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" /></svg></span>{inuser.emailadd}</a>}</span>
 
