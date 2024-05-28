@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import Tempate from './Tempate'
 import Maincontainer from './Maincontainer';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {setHtmlcode} from '../reduxfiles/slice/Feature'
 function Htmleditor() {
-  const [htmlCode, setHtmlCode] = useState('');
+  const inputs3 = useSelector((state) => state.inputs3);
+  const [htmlCode, setHtmlCode] = useState(inputs3.htmlcode);
+  const dispatch = useDispatch()
 
   const handleInputChange = (event) => {
     setHtmlCode(event.target.value);
+    dispatch(setHtmlcode(htmlCode))
   };
 
   return (
@@ -32,7 +36,7 @@ function Htmleditor() {
               <h2>Preview</h2>
             </div>
           </div>
-          <div className="body bg-white w-full p-5">  <Tempate dangerouslySetInnerHTML={{ __html: htmlCode }} />
+          <div className="body bg-white w-full p-5">  <Tempate  />
           </div>
         </div>
       </div>

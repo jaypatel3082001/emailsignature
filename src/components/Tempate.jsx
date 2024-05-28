@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 // import {imgsrc} from '../assets'
 // import instasv from '../assets/p1.jpg'
 
-function Tempate(props) {
+function Tempate() {
     const assetsUrl = import.meta.env.VITE_APP_ASSETS_URL;
     const inputs = useSelector((state) => state.inputs);
     const inputs2 = useSelector((state) => state.inputs2);
-    const dangerouslySetInnerHTML = props
-    console.log("hayyyudada",dangerouslySetInnerHTML)
+    const inputs3 = useSelector((state) => state.inputs3);
+    // const dangerouslySetInnerHTML = props
+    // console.log("hayyyudada",dangerouslySetInnerHTML)
     const inuser = inputs.user
     const { pelutemp } = inputs.temps
     let acol=inputs2?.color
@@ -98,8 +99,9 @@ function Tempate(props) {
                            {inputs.banner ?  <img src={inputs.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
                         </div>
                     </div>
-                    {/* { dangerouslySetInnerHTML.htmlcode && <div className='flex'> */}
-                      <div className='text-black' {...dangerouslySetInnerHTML}/>
+                  
+                      <div className='text-black' dangerouslySetInnerHTML={{ __html: inputs3.htmlcode }}/>
+                      {/* <div>{}</div> */}
                     {/* </div>} */}
                    
                 </div>

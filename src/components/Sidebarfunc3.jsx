@@ -159,7 +159,7 @@ function Sidebarfunc3() {
                 <div className="colorwrap">
                 <div className="flex justify-between">
                   <div className='flex w-full pb-3'><span className='text-3xl font-bold'>#</span> <span className='bg-white text-black px-3 flex w-40 rounded-lg ml-3'><span className=' w-auto flex items-center'>{h1}</span></span></div>
-                  <span className="w-10 h-10  rounded-full justify-between" style={{background: `rgb(${inputs2.color[0]},${inputs2.color[1]},${inputs2.color[2]})`}} onClick={showNamecolor}></span>
+                  <span className="w-10 h-10  rounded-full justify-between cursor-pointer" style={{background: `rgb(${inputs2.color[0]},${inputs2.color[1]},${inputs2.color[2]})`}} onClick={showNamecolor}></span>
                 </div>
                 <div className={`w-full px-5 ${inputs2.showcolor1 === true ? 'block' : 'hidden' }`}>
                
@@ -254,7 +254,7 @@ function Sidebarfunc3() {
                 <div className="colorwrap">
                 <div className="flex justify-between">
                   <div className='flex w-full pb-3'><span className='text-3xl font-bold'>#</span> <span className='bg-white text-black px-3 flex w-40 rounded-lg ml-3'><span className=' w-auto flex items-center'>{h2}</span></span></div>
-                  <span className="w-10 h-10 rounded-full justify-between" style={{background: `rgb(${inputs2.color2[0]},${inputs2.color2[1]},${inputs2.color2[2]})`}} onClick={showNamecolor2}></span>
+                  <span className="w-10 h-10 rounded-full justify-between cursor-pointer" style={{background: `rgb(${inputs2.color2[0]},${inputs2.color2[1]},${inputs2.color2[2]})`}} onClick={showNamecolor2}></span>
                 </div>
                 <div className={`w-full px-5 ${inputs2.showcolor2 === true   ? 'block' : 'hidden' }`}>
                

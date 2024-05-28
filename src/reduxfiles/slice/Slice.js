@@ -20,7 +20,7 @@ const  initialState= {
    
   },
   banner:null,
-  
+  htmlcode:'',
  
 
 
@@ -47,10 +47,13 @@ const inputSlice = createSlice({
     setReset:(state,action)=>{
       return initialState
     },
+    setHtmlcode:(state,action)=>{
+      state.htmlcode = action.payload;
+    }
 
     },
   
 });
 
-export const { setInput, setImg, setTemp, setBaner,setReset } = inputSlice.actions;
+export const { setInput, setImg, setTemp, setBaner,setReset,setHtmlcode } = inputSlice.actions;
 export default inputSlice.reducer;
