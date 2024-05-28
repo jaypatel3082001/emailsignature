@@ -20,10 +20,8 @@ const  initialState= {
    
   },
   banner:null,
-  color:[0,0,0],
-  color2:[0,0,0],
-  posi1:{ x: 0, y: 0 },
-  posi2:{ x: 0, y: 0 }
+ 
+
 
 }
 
@@ -48,21 +46,10 @@ const inputSlice = createSlice({
     setReset:(state,action)=>{
       return initialState
     },
-    setColr:(state,action)=>{
-      state.color=action.payload
-    },
-    setColr2:(state,action)=>{
-      state.color2=action.payload
-    },
-    setPosi1:(state,action)=>{
-      state.posi1=action.payload
-    },
-    setPosi2:(state,action)=>{
-      state.posi2=action.payload
-    },
+
     },
   
 });
 
-export const { setInput, setImg, setTemp, setBaner,setReset,setColr,setColr2,setPosi1,setPosi2 } = inputSlice.actions;
+export const { setInput, setImg, setTemp, setBaner,setReset } = inputSlice.actions;
 export default inputSlice.reducer;

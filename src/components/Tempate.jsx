@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 // import {imgsrc} from '../assets'
 // import instasv from '../assets/p1.jpg'
 
 function Tempate(props) {
     const assetsUrl = import.meta.env.VITE_APP_ASSETS_URL;
     const inputs = props.inputVVlu
+    const inputs2 = useSelector((state) => state.inputs2);
+    // const inputs2 = props.inputVVlu2
     const inuser = inputs.user
     const { pelutemp } = inputs.temps
-    let acol=inputs?.color
-    let acol2=inputs?.color2
-    let ab =parseInt(acol[0])
+    let acol=inputs2?.color
+    let acol2=inputs2?.color2
+    // console.log("jay itssss",acol)
+    let ab =parseInt(acol[0]) 
     let abh = parseInt(acol[1])
     let abk = parseInt(acol[2])
     let ab2 =parseInt(acol2[0])
@@ -19,7 +23,7 @@ function Tempate(props) {
     // console.log("2ndeeeeeeefghfgj",ab2)
     // console.log("2ndeeeeeeefghfgj",abh2)
     // console.log("2ndeeeeeeefghfgj",abk2)
-    console.log("2ndeeeeeeefghfgj",acol2)
+    // console.log("2ndeeeeeeefghfgj",acol2)
     // console.log("refh",inputs.color)
     //  a1 = false, a2 = false, a3 = "false", a4 = "false", a5 = "false", a6 = "false";
     
