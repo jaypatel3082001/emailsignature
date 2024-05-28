@@ -1,8 +1,8 @@
 import React from 'react'
 import Tempate from './Tempate'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 function Maincontainer() {
-    const inputs = useSelector((state) => state.inputs);
+   
     
     // const inputVVlu1 = props.inputVVlu
     // console.log(props)
@@ -25,7 +25,7 @@ function Maincontainer() {
                 </div>
                </div>
                 <div className="body bg-white w-full p-5">
-                    <Tempate  inputVVlu={inputs} />
+                    <Tempate />
 
                 </div>
 

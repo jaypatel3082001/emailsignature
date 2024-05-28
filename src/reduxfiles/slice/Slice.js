@@ -20,6 +20,7 @@ const  initialState= {
    
   },
   banner:null,
+  
  
 
 

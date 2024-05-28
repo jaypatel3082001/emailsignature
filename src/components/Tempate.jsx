@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 
 function Tempate(props) {
     const assetsUrl = import.meta.env.VITE_APP_ASSETS_URL;
-    const inputs = props.inputVVlu
+    const inputs = useSelector((state) => state.inputs);
     const inputs2 = useSelector((state) => state.inputs2);
-    // const inputs2 = props.inputVVlu2
+    const dangerouslySetInnerHTML = props
+    console.log("hayyyudada",dangerouslySetInnerHTML)
     const inuser = inputs.user
     const { pelutemp } = inputs.temps
     let acol=inputs2?.color
@@ -97,6 +98,10 @@ function Tempate(props) {
                            {inputs.banner ?  <img src={inputs.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
                         </div>
                     </div>
+                    {/* { dangerouslySetInnerHTML.htmlcode && <div className='flex'> */}
+                      <div className='text-black' {...dangerouslySetInnerHTML}/>
+                    {/* </div>} */}
+                   
                 </div>
 
             </div>
