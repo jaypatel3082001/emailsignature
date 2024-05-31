@@ -1,13 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {  useLocation  } from 'react-router-dom'
 // import {imgsrc} from '../assets'
 // import instasv from '../assets/p1.jpg'
 
-function Tempate() {
+function Tempate(ele) {
+    const inptmain = useLocation()
+    console.log("currect path is ",inptmain.pathname)
+  let inputs,inputs2,inputs3;
+switch(inptmain.pathname){
+    case "/":
+         inputs = useSelector((state) => state.inputs);
+         inputs2 = useSelector((state) => state.inputs2);
+         inputs3 = useSelector((state) => state.inputs3);
+        break;
+    case "/mysignature":
+         inputs = ele.ele.inputs;
+         inputs2 = ele.ele.inputs2;
+         inputs3 = ele.ele.inputs3;
+        break;
+}
+
     const assetsUrl = import.meta.env.VITE_APP_ASSETS_URL;
-    const inputs = useSelector((state) => state.inputs);
-    const inputs2 = useSelector((state) => state.inputs2);
-    const inputs3 = useSelector((state) => state.inputs3);
+    // const inputs = useSelector((state) => state.inputs);
+    // const inputs2 = useSelector((state) => state.inputs2);
+    // const inputs3 = useSelector((state) => state.inputs3);
     // const dangerouslySetInnerHTML = props
     // console.log("hayyyudada",dangerouslySetInnerHTML)
     const inuser = inputs.user

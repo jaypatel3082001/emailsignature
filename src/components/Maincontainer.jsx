@@ -7,13 +7,14 @@ function Maincontainer() {
    
     
     const inputs = useSelector((state)=>state.inputs)
-    // const inputs2 = useSelector((state)=>state.inputs)
-    // const inputs3 = useSelector((state)=>state.inputs)
+    const inputs2 = useSelector((state)=>state.inputs2)
+    const inputs3 = useSelector((state)=>state.inputs3)
+    const input = {inputs,inputs2,inputs3}
    const navigator = useNavigate()
     
     const handleSubmit = (e) =>{
          e.preventDefault()
-        axios.post('https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting',inputs)
+        axios.post('https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting',input)
         .then(res => {
             console.log(res)
             navigator('/mysignature')

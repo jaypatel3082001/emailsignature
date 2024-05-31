@@ -5,7 +5,7 @@ function BackendSidebar() {
   return (
     <>
         <div className='flex'>
-            <div className='h-screen'>
+            <div className='min-h-screen'>
             <div className='w-full h-full bg-[#536697] flex flex-col p-5'>
             <div className='text-white justify-around'>
 

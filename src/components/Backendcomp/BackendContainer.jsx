@@ -3,7 +3,10 @@ import Tempate from '../Tempate'
 import axios from 'axios'
 import { useNavigate,Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setInput, setImg,setBaner } from '../../reduxfiles/slice/Slice';
+import { setInput, setImg, setTemp, setBaner,setReset } from '../../reduxfiles/slice/Slice';
+import { setReset2,setColr,setColr2,setPosi1,setPosi2,setCopen1,setCopen2 } from '../../reduxfiles/slice/Colorslice';
+import { setHtmlcode } from '../../reduxfiles/slice/Feature';
+// import Backendtemp from './Backendtemp'
 
 function BackendContainer() {
     const [actionstate,setActionstate]=useState()
@@ -67,7 +70,10 @@ function BackendContainer() {
     const handleEdit =(e)=>{
         data.map((ele)=>{
             if(ele.id===e.target.value){
-                const arr=ele.user
+                const inp1=ele.inputs
+                const inp2=ele.inputs2
+                const inp3=ele.inputs3
+                const arr=inp1.user
                 const userInfoArray = Object.keys(arr).map(key => ({
                     name: key,
                     value: arr[key]
@@ -77,7 +83,32 @@ function BackendContainer() {
                   userInfoArray.map((ele,i)=>{
                     dispatch(setInput(ele))
                   })
-                 
+                  dispatch(setImg(inp1.image))
+                  const arr2=inp1.temps
+                  const userInfoArray2 = Object.keys(arr2).map(key => ({
+                    name: key,
+                    value: arr2[key]
+              
+                  }));
+              
+                  userInfoArray2.map((ele,i)=>{
+                    dispatch(setTemp(ele))
+                  })
+                //   console.log("temp number => ",arr2)
+                  
+                //   dispatch(setTemp())
+                  dispatch(setBaner(inp1.banner))
+                //   dispatch(setReset())
+                //   dispatch(setReset2())
+                  dispatch(setColr(inp2.color))
+                  dispatch(setColr2(inp2.color2))
+                  dispatch(setPosi1(inp2.posi1))
+                  dispatch(setPosi2(inp2.posi2))
+                  dispatch(setCopen1(inp2.showcolor1))
+                  dispatch(setCopen2(inp2.showcolor2))
+                  dispatch(setHtmlcode(inp3.htmlcode))
+                //  const bijo = ele.inputs2.color
+                //  console.log("color for dis",bijo)
                 navigator('/')
                 // console.log("aa user 6",ele)
                 // console.log("aa user ddf 6",userInfoArray)
@@ -109,7 +140,7 @@ function BackendContainer() {
           
           </div>
            <div className="body bg-white w-full p-5">
-               <Tempate />
+               <Tempate ele={ele}/>
                <div className='flex justify-between'>
            <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' value={ele.id} onClick={handleEdit} >Edit</button>
            
