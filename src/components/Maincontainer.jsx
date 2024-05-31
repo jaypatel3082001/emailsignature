@@ -1,10 +1,24 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Tempate from './Tempate'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 function Maincontainer() {
    
     
-    // const inputVVlu1 = props.inputVVlu
+    const inputs = useSelector((state)=>state.inputs)
+   const navigator = useNavigate()
+    
+    const handleSubmit = (e) =>{
+         e.preventDefault()
+        axios.post('https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting',inputs)
+        .then(res => {
+            console.log(res)
+            navigator('/mysignature')
+        })
+        .catch(err => console.log(err))
+    }
+    
     // console.log(props)
   return (
     <div className='w-full h-auto bg-[#fe8004] '>
@@ -27,6 +41,9 @@ function Maincontainer() {
                 <div className="body bg-white w-full p-5">
                     <Tempate />
 
+                </div>
+                <div className='flex justify-end'>
+                <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleSubmit}>Submit</button>
                 </div>
 
             </div>

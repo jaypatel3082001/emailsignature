@@ -1,32 +1,25 @@
-import { useState } from 'react'
-
-import './App.css'
-
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
-import Maincontainer from './components/Maincontainer'
+import React from 'react'
+import Home from './Home'
+import { BrowserRouter as Router,Routes,Route,Link } from 'react-router-dom'
+import Mysignature from './components/Backendcomp/Mysignature'
 
 function App() {
-
-  // const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div className='w-full h-full'>
-        <Header />
-       
-        <div className='flex h-full w-full'>
-          {/* <Sidebar /> */}
-         
-          <Sidebar />
-           <Maincontainer />
-        </div>
+    <Router>
+    {/* <Home /> */}
+    
+    <Routes>
+    {/* <Route path="/create" element={<Create />} /> */}
+    <Route path="/" element={<Home />} />
+    <Route path="/mysignature" element={<Mysignature />} />
+    <Route path="/mysignature/:id" element={<Mysignature />} />
+    {/* <Route path="/:id" element={<Home />} /> */}
+    {/* <Route path="/update/:id" element={<Update />} /> */}
+    {/* <Route path="/read/:id" element={<Read />} /> */}
 
-      </div>
-
-    </>
+  </Routes>
+    </Router>
   )
 }
 
 export default App
-
