@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import Tempate from './Tempate'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -9,6 +9,7 @@ function Maincontainer() {
     const inputs = useSelector((state)=>state.inputs)
     const inputs2 = useSelector((state)=>state.inputs2)
     const inputs3 = useSelector((state)=>state.inputs3)
+    const [data,setData]=useState([])
     const input = {inputs,inputs2,inputs3}
    const navigator = useNavigate()
     
@@ -21,7 +22,30 @@ function Maincontainer() {
         })
         .catch(err => console.log(err))
     }
-    
+    const handleUpdate =  (e) =>{
+       
+       data.map((ele)=>{
+        if(ele.id==inputs3.userid)
+      {
+        e.preventDefault()
+        axios.put(`https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting/${ele.id}`,input)
+        .then(res => {
+            console.log("Updated user",res)
+            navigator('/mysignature')
+        })
+        .catch(err => console.log(err))
+        console.log("aa 6e updated user data",ele)
+      }
+       })
+    }
+    useEffect(()=>{
+        fetchData()
+      },[])
+      const fetchData = async()=>{
+          await  axios.get('https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting')
+          .then(res => setData(res.data))
+          .catch(err => console.log(err))
+      }
     // console.log(props)
   return (
     <div className='w-full h-auto bg-[#fe8004] '>
@@ -46,7 +70,7 @@ function Maincontainer() {
 
                 </div>
                 <div className='flex justify-end'>
-                <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleSubmit}>Submit</button>
+              {inputs3.userid ?   <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleUpdate}>Done Changes</button> :   <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleSubmit}>Submit</button>}
                 </div>
 
             </div>

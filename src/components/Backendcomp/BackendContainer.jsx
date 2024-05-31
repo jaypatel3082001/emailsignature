@@ -5,7 +5,7 @@ import { useNavigate,Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setInput, setImg, setTemp, setBaner,setReset } from '../../reduxfiles/slice/Slice';
 import { setReset2,setColr,setColr2,setPosi1,setPosi2,setCopen1,setCopen2 } from '../../reduxfiles/slice/Colorslice';
-import { setHtmlcode } from '../../reduxfiles/slice/Feature';
+import { setHtmlcode,setUserid } from '../../reduxfiles/slice/Feature';
 // import Backendtemp from './Backendtemp'
 
 function BackendContainer() {
@@ -107,6 +107,7 @@ function BackendContainer() {
                   dispatch(setCopen1(inp2.showcolor1))
                   dispatch(setCopen2(inp2.showcolor2))
                   dispatch(setHtmlcode(inp3.htmlcode))
+                  dispatch(setUserid(ele.id))
                 //  const bijo = ele.inputs2.color
                 //  console.log("color for dis",bijo)
                 navigator('/')
@@ -116,6 +117,20 @@ function BackendContainer() {
         })
 
     }
+    const handleDelete= async (e)=>{
+      e.preventDefault()
+      // let filerarray = data.filter((ele,ind)=>{
+      //   return ele.id!==value
+      // })
+      // setData(filerarray)
+    await axios.delete(`https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting/${e.target.value}`)
+        .then(res => {
+           setData(res.data)
+           navigator(0)
+        })
+        .catch(err => console.log(err))
+    }
+
     useEffect(()=>{
         fetchData()
       },[])
@@ -132,8 +147,8 @@ function BackendContainer() {
         <div className="h-full w-full bg-yellow-200 p-10 flex  flex-col">
         {data.map((ele,ind)=>{
           return (  <div className="wrap w-[70%] h-full mt-5" key={ind}>
-          <div className="head bg-white">
-           <span>{ele.template ? ele.template :"Template"}</span>
+          <div className="head bg-white flex flex-col">
+           <span className='px-3 mt-3'>{ele.template ? ele.template :"Template"}</span>
           <div className=" w-full flex p-3 border-b-[1px] border-gray-300">
               
            </div>
@@ -150,7 +165,7 @@ function BackendContainer() {
                  <ul>
                    <li value={ele.id} onClick={renameHand}>Rename</li>
                    <li>Duplicate</li>
-                   <li>Delete</li>
+                   <li value={ele.id} onClick={handleDelete}>Delete</li>
                  </ul>
                </div>}</button>
        
