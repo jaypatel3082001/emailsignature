@@ -7,6 +7,8 @@ function Maincontainer() {
    
     
     const inputs = useSelector((state)=>state.inputs)
+    // const inputs2 = useSelector((state)=>state.inputs)
+    // const inputs3 = useSelector((state)=>state.inputs)
    const navigator = useNavigate()
     
     const handleSubmit = (e) =>{

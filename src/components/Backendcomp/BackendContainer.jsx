@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react'
 import Tempate from '../Tempate'
 import axios from 'axios'
 import { useNavigate,Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setInput, setImg,setBaner } from '../../reduxfiles/slice/Slice';
 
 function BackendContainer() {
     const [actionstate,setActionstate]=useState()
@@ -9,6 +11,7 @@ function BackendContainer() {
     const [tempstate,setTempstate]=useState({
         template: ''
     })
+    const dispatch =useDispatch()
     const [data,setData]=useState([])
     const [formdata,setFormdata]=useState()
     const navigator = useNavigate()
@@ -61,6 +64,27 @@ function BackendContainer() {
        })
     
     }
+    const handleEdit =(e)=>{
+        data.map((ele)=>{
+            if(ele.id===e.target.value){
+                const arr=ele.user
+                const userInfoArray = Object.keys(arr).map(key => ({
+                    name: key,
+                    value: arr[key]
+              
+                  }));
+              
+                  userInfoArray.map((ele,i)=>{
+                    dispatch(setInput(ele))
+                  })
+                 
+                navigator('/')
+                // console.log("aa user 6",ele)
+                // console.log("aa user ddf 6",userInfoArray)
+            }
+        })
+
+    }
     useEffect(()=>{
         fetchData()
       },[])
@@ -87,7 +111,7 @@ function BackendContainer() {
            <div className="body bg-white w-full p-5">
                <Tempate />
                <div className='flex justify-between'>
-           <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' >Edit</button>
+           <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' value={ele.id} onClick={handleEdit} >Edit</button>
            
 
          

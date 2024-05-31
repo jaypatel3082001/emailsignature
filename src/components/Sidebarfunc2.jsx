@@ -33,6 +33,7 @@ function Sidebarfunc2() {
     // }
     const handleChange = (e) => {
         const { name, value } = e.target
+        console.log("sidebar no data",{ name, value })
         dispatch(setInput({ name, value }));
     };
     const handleImageUpload = (event) => {
