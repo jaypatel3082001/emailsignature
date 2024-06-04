@@ -1,25 +1,71 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {  useLocation  } from 'react-router-dom'
+import {  useLocation, useParams  } from 'react-router-dom'
 // import {imgsrc} from '../assets'
 // import instasv from '../assets/p1.jpg'
 
 function Tempate(ele) {
     const inptmain = useLocation()
+    // const [fetchdata,setFetchdata]=useState()
+    const [idstore,setIdstore]=useState()
+    const  {userid}  = useParams(); 
+
     console.log("currect path is ",inptmain.pathname)
-  let inputs,inputs2,inputs3;
-switch(inptmain.pathname){
+  let inputs11,inputs22,inputs33;
+  console.log("new pathhhgggggggggggggggggggggg",userid)
+
+  
+//   console.log("ne Ajjjjjjjjjjjjj",match)
+//   console.log("new fgfhffhf pathhhh",id)
+//   console.log("atyarno bap",ele)
+//   useEffect(()=>{
+//     setFetchdata([ele.ele])
+//   },[])
+//   console.log("tro fdhfdh maro",ele)
+//   console.log("tro fdhfdh sndgnsg",fetchdata)
+    // fetchdata.find((element)=>{
+    //     if(i>1){
+    //         console.log("kal",element.userId)
+    //     }
+        
+    // })
+//   console.log("tro iddddddddddddddddddd sndgnsg",id)
+//   fetchdata.map((element)=>{
+//   for(let i=0;i<1;i++){
+//     setIdstore(element.userId)
+//   }
+  switch(inptmain.pathname){
     case "/":
-         inputs = useSelector((state) => state.inputs);
-         inputs2 = useSelector((state) => state.inputs2);
-         inputs3 = useSelector((state) => state.inputs3);
+        inputs11 = useSelector((state) => state.inputs);
+        inputs22 = useSelector((state) => state.inputs2);
+        inputs33 = useSelector((state) => state.inputs3);
         break;
-    case "/mysignature":
-         inputs = ele.ele.inputs;
-         inputs2 = ele.ele.inputs2;
-         inputs3 = ele.ele.inputs3;
+    case `/mysignature/users/${userid}/emailuserdetails`:
+        inputs11 = ele.ele.inputs;
+         inputs22 = ele.ele.inputs2;
+         inputs33 = ele.ele.inputs3;
+        break;
+    case `/users/${userid}/emailuserdetails`:
+        inputs11 = useSelector((state) => state.inputs);
+        inputs22 = useSelector((state) => state.inputs2);
+        inputs33 = useSelector((state) => state.inputs3);
         break;
 }
+
+//   })
+// console.log("aaaaaaaaaaaaaaaaaaaa", fetchdata)
+// if(inptmain.pathname==='/'){
+//          inputs11 = useSelector((state) => state.inputs);
+//          inputs22 = useSelector((state) => state.inputs2);
+//          inputs33= useSelector((state) => state.inputs3);
+// }else{
+    // inputs11 = ele.ele.inputs;
+    // inputs22 = ele.ele.inputs2;
+    // inputs33 = ele.ele.inputs3;
+
+
+       
+
 
     const assetsUrl = import.meta.env.VITE_APP_ASSETS_URL;
     // const inputs = useSelector((state) => state.inputs);
@@ -27,10 +73,10 @@ switch(inptmain.pathname){
     // const inputs3 = useSelector((state) => state.inputs3);
     // const dangerouslySetInnerHTML = props
     // console.log("hayyyudada",dangerouslySetInnerHTML)
-    const inuser = inputs.user
-    const { pelutemp } = inputs.temps
-    let acol=inputs2?.color
-    let acol2=inputs2?.color2
+    const inuser = inputs11.user
+    const { pelutemp } = inputs11.temps
+    let acol=inputs22?.color
+    let acol2=inputs22?.color2
     // console.log("jay itssss",acol)
     let ab =parseInt(acol[0]) 
     let abh = parseInt(acol[1])
@@ -59,6 +105,7 @@ switch(inptmain.pathname){
     // console.log("a4=",a4)
     // console.log("a5=",a5)
     // console.log("a6=",a6)
+    console.log("this is img url",assetsUrl)
 
     return (
         <>
@@ -66,7 +113,7 @@ switch(inptmain.pathname){
                 <div className="h-72">
                     <div className="flex w-auto">
                         <div className={`image border-r-blue-400 border-[1px] border-t-0 border-l-0 border-b-0 ${pelutemp=='1' && " border-r-blue-400"} ${pelutemp=='2' && "border-r-0"}`}>
-                            <div className='imgwrap h-28 w-28  pr-3'>{inputs.image ? <img src={inputs.image} alt="Uploaded" /> : <img src={`${assetsUrl}p1.jpg`} alt="" />}</div>
+                            <div className='imgwrap h-28 w-28  pr-3'>{inputs11.image ? <img src={inputs11.image} alt="Uploaded" /> : <img src={`${assetsUrl}p1.jpg`} alt="" />}</div>
 
                             <ul className={`flex pt-3 pr-2 ${pelutemp=='1' && "bg-white"} ${pelutemp=='2' && "custom-template1"} ${pelutemp=='3' && "bg-blue-600"} ${pelutemp=='4' && "bg-slate-600"} ${pelutemp=='5' && "bg-yellow-600"} ${pelutemp=='6' && "bg-red-600"} `}>
                                
@@ -105,7 +152,7 @@ switch(inptmain.pathname){
                             </div>
                             <div className={`${pelutemp=='1' && "hidden"} ${pelutemp=='2' && "flex"}`}>
                                 <div className= {`bannerwraper pt-3 pr-5 w-full`}>
-                                {inputs.banner ?  <img src={inputs.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
+                                {inputs11.banner ?  <img src={inputs11.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
                                 </div>
                               </div>
 
@@ -113,11 +160,11 @@ switch(inptmain.pathname){
                     </div>
                     <div className={`flex ${pelutemp=='2' && "hidden"}`}>
                         <div className= {`bannerwraper pt-3 pr-5 w-full`}>
-                           {inputs.banner ?  <img src={inputs.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
+                           {inputs11.banner ?  <img src={inputs11.banner} alt="" className={`w-full h-[80px] border-none`} /> : <img src={`${assetsUrl}banner1.jpeg`} alt="" className={`w-full h-[80px] border-none`} />}
                         </div>
                     </div>
                   
-                      <div className='text-black' dangerouslySetInnerHTML={{ __html: inputs3.htmlcode }}/>
+                      <div className='text-black' dangerouslySetInnerHTML={{ __html: inputs33.htmlcode }}/>
                       {/* <div>{}</div> */}
                     {/* </div>} */}
                    

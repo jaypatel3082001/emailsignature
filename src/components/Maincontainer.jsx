@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import Tempate from './Tempate'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 function Maincontainer() {
    
@@ -9,40 +9,51 @@ function Maincontainer() {
     const inputs = useSelector((state)=>state.inputs)
     const inputs2 = useSelector((state)=>state.inputs2)
     const inputs3 = useSelector((state)=>state.inputs3)
+    const {userid}= useParams()
     const [data,setData]=useState([])
     const input = {inputs,inputs2,inputs3}
    const navigator = useNavigate()
+   console.log("aa user id 6 temp.",userid)
     
     const handleSubmit = (e) =>{
-         e.preventDefault()
-        axios.post('https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting',input)
-        .then(res => {
-            console.log(res)
-            navigator('/mysignature')
-        })
-        .catch(err => console.log(err))
+        if(userid){
+          e.preventDefault()
+          axios.post(`https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/users/${userid}/emailuserdetails`,input)
+          .then(res => {
+              console.log(res)
+              navigator(`/mysignature/users/${userid}/emailuserdetails`)
+          })
+          .catch(err => console.log(err))
+        }else{
+          navigator('/login')
+        }
     }
     const handleUpdate =  (e) =>{
        
-       data.map((ele)=>{
-        if(ele.id==inputs3.userid)
-      {
-        e.preventDefault()
-        axios.put(`https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting/${ele.id}`,input)
-        .then(res => {
-            console.log("Updated user",res)
-            navigator('/mysignature')
-        })
-        .catch(err => console.log(err))
-        console.log("aa 6e updated user data",ele)
+      if(userid){
+        data.map((ele)=>{
+          if(ele.id==inputs3.userid)
+        {
+          e.preventDefault()
+          axios.put(`https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/users/${userid}/emailuserdetails/${ele.id}`,input)
+          .then(res => {
+              console.log("Updated user",res)
+              navigator(`/mysignature/users/${userid}/emailuserdetails`)
+          })
+          .catch(err => console.log(err))
+          console.log("aa 6e updated user data",ele)
+        }
+         })
+
+      }else{
+        navigator('/login')
       }
-       })
     }
     useEffect(()=>{
         fetchData()
       },[])
       const fetchData = async()=>{
-          await  axios.get('https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/emailtesting')
+          await  axios.get(`https://6655cb453c1d3b60293b1f2c.mockapi.io/emailsignature/users/${userid}/emailuserdetails`)
           .then(res => setData(res.data))
           .catch(err => console.log(err))
       }
@@ -70,7 +81,11 @@ function Maincontainer() {
 
                 </div>
                 <div className='flex justify-end'>
-              {inputs3.userid ?   <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleUpdate}>Done Changes</button> :   <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleSubmit}>Submit</button>}
+                {data && data.length > 0 && userid ? (
+  <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleUpdate}>Done Changes</button>
+) : (
+  <button className='px-3 mx-3 rounded-md border-[1px] py-1 border-black bg-white mt-5' onClick={handleSubmit}>Submit</button>
+)}
                 </div>
 
             </div>
